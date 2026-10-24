@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>电脑配件怎么选？CPU/显卡/主板大白话讲解 | 装机小站</title>
+  <meta name="description" content="用大白话看懂九大电脑配件：CPU、显卡、主板、内存、硬盘、电源、机箱、散热器、显示器——每个配件有什么用、参数怎么看、新手怎么选，读完这篇就会。" />
+  <meta name="keywords" content="电脑配件,CPU怎么选,显卡怎么选,主板,内存,硬盘,电源,机箱,散热器,电脑配置" />
+  <meta name="author" content="装机小站" />
+  <meta name="theme-color" content="#4a9eff" />
+  <link rel="canonical" href="https://www.example.com/parts.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="装机小站" />
+  <meta property="og:title" content="电脑配件怎么选？大白话讲解九大配件" />
+  <meta property="og:description" content="CPU、显卡、主板等电脑配件的作用、参数与选购建议，新手读完就懂。" />
+  <meta property="og:locale" content="zh_CN" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="logo" href="/"><span class="logo-icon">💻</span><span>装机小站</span></a>
+      <ul class="nav-links">
+        <li><a href="/">首页</a></li>
+        <li><a href="/parts.html" class="active">配件认识</a></li>
+        <li><a href="/guide.html">装机教程</a></li>
+        <li><a href="/builder.html">配置单</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" title="切换主题">🌙</button>
+        <button class="nav-toggle" title="菜单">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <h1>🧩 配件认识中心</h1>
+      <p>把每个零件的“作用、参数、选购要点”讲成大白话。读完这一页，你就能看懂任何装机配置单。</p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:36px;">
+    <div class="container">
+      <!-- 分类筛选 -->
+      <div class="parts-toolbar" id="parts-filter">
+        <button class="filter-btn active" data-filter="all">全部</button>
+      </div>
+
+      <!-- 配件卡片由 JS 从服务器 API 加载 -->
+      <div class="grid grid-3" id="parts-grid">
+        <div class="state-tip">⏳ 正在从服务器加载配件数据…</div>
+      </div>
+
+      <p id="parts-error" style="display:none;color:var(--danger);text-align:center;"></p>
+    </div>
+  </section>
+
+  <!-- 选购优先级 -->
+  <section class="section" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-title">
+        <h2>💡 预算怎么分配？</h2>
+        <p class="sub">按用途决定各配件的投入比例（总价 100% 参考）</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:36px;">
+        <div class="card" style="border-top:3px solid var(--accent);">
+          <h3 style="margin-bottom:12px;">🎮 游戏主机</h3>
+          <ul class="tip-list">
+            <li>显卡 ≈ 35–45%（帧数第一生产力）</li>
+            <li>CPU ≈ 15–20%</li>
+            <li>内存 16GB 起，1TB 固态</li>
+            <li>电源金牌 650W+</li>
+            <li>显示器记得留 15% 预算！</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top:3px solid var(--accent-2);">
+          <h3 style="margin-bottom:12px;">🎬 剪辑 / 生产力</h3>
+          <ul class="tip-list">
+            <li>CPU ≈ 25–30（多核多线程优先）</li>
+            <li>内存 32GB 起步，64GB 更佳</li>
+            <li>固态硬盘强烈影响素材加载，选高速 NVMe</li>
+            <li>显卡中等即可（除 AI 绘图外）</li>
+            <li>NVIDIA 显卡的 CUDA 生态对剪辑软件更友好</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top:3px solid var(--warn);">
+          <h3 style="margin-bottom:12px;">💼 办公影音</h3>
+          <ul class="tip-list">
+            <li>带核显的 CPU + 主板 + 16GB 内存即可</li>
+            <li>512GB 固态硬盘保证流畅</li>
+            <li>不必买独立显卡，静音小型化是亮点</li>
+            <li>电源 400–500W 足够</li>
+            <li>把预算花在好显示器和 SSD 上体验更好</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="f-brand">💻 装机小站</div>
+        <p class="f-note">配件数据来自本站服务器 API（/api/parts），教学内容持续维护更新。</p>
+      </div>
+      <div class="f-links">
+        <a href="/parts.html">配件认识</a>
+        <a href="/guide.html">装机教程</a>
+        <a href="/builder.html">互动配置单</a>
+      </div>
+    </div>
+    <div class="f-bottom">© <span data-year>2026</span> 装机小站 · 仅供学习交流</div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/parts-data.js"></script>
+  <script>
+    (async function () {
+      const grid = document.getElementById('parts-grid');
+      const errBox = document.getElementById('parts-error');
+      const filterBar = document.getElementById('parts-filter');
+
+      async function loadParts() {
+        try {
+          const res = await fetch('/api/parts');
+          if (!res.ok) throw new Error('服务器返回状态码 ' + res.status);
+          const data = await res.json();
+          return data.components || [];
+        } catch (err) {
+          // 纯静态部署回退：离线数据
+          if (window.__PARTS_DATA__) {
+            console.info('[装机小站] 使用离线配件数据（静态部署模式）');
+            return window.__PARTS_DATA__.components || [];
+          }
+          grid.innerHTML = '';
+          errBox.style.display = 'block';
+          errBox.textContent = '⚠️ 配件数据加载失败：' + err.message + '（请确认服务器正在运行）';
+          return null;
+        }
+      }
+
+      function escapeHtml(s) {
+        const div = document.createElement('div');
+        div.textContent = s;
+        return div.innerHTML;
+      }
+
+      function render(list, filter) {
+        const items = filter === 'all' ? list : list.filter((c) => c.id === filter);
+        grid.innerHTML = items.map((c) => `
+          <article class="card part-card">
+            <div class="part-icon">${c.icon}</div>
+            <h3>${escapeHtml(c.name)}</h3>
+            <div class="tagline">${escapeHtml(c.tagline)}</div>
+            <p class="role">${escapeHtml(c.role)}</p>
+            <details>
+              <summary>关键参数怎么看（${c.specs.length} 条）</summary>
+              <div class="spec-list">
+                ${c.specs.map((s) => `
+                  <div class="spec-item">
+                    <div class="k">${escapeHtml(s.label)}</div>
+                    <div class="v">${escapeHtml(s.desc)}</div>
+                  </div>`).join('')}
+              </div>
+            </details>
+            <details>
+              <summary>选购建议（${c.tips.length} 条）</summary>
+              <ul class="tip-list">
+                ${c.tips.map((t) => `<li>${escapeHtml(t)}</li>`).join('')}
+              </ul>
+            </details>
+            <div class="brand-tags">
+              ${c.brands.map((b) => `<span class="brand-tag">${escapeHtml(b)}</span>`).join('')}
+            </div>
+          </article>`).join('');
+      }
+
+      const list = await loadParts();
+      if (!list) return;
+
+      // 构建筛选按钮
+      filterBar.insertAdjacentHTML('beforeend',
+        list.map((c) => `<button class="filter-btn" data-filter="${c.id}">${c.icon} ${c.name.split('（')[0]}</button>`).join(''));
+      filterBar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        filterBar.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        render(list, btn.dataset.filter);
+      });
+
+      render(list, 'all');
+    })();
+  </script>
+</body>
+</html>

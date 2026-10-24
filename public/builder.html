@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在线装机配置单 · 自动检查配件兼容性与功耗 | 装机小站</title>
+  <meta name="description" content="像玩游戏装模组一样配电脑：选配件时自动检查 CPU 主板显卡内存兼容性、计算整机功耗与预算总价，不兼容的选项直接置灰防选错，新手也能配出靠谱电脑。" />
+  <meta name="keywords" content="装机配置单,电脑配置单,配置单兼容性检查,电脑功耗计算,DIY装机,显卡天梯,装机模拟器" />
+  <meta name="author" content="装机小站" />
+  <meta name="theme-color" content="#4a9eff" />
+  <link rel="canonical" href="https://www.example.com/builder.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="装机小站" />
+  <meta property="og:title" content="在线装机配置单 · 自动检查兼容性" />
+  <meta property="og:description" content="像装模组一样选配件，不兼容的选项自动置灰，新手也能配出靠谱电脑。" />
+  <meta property="og:locale" content="zh_CN" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="logo" href="/"><span class="logo-icon">💻</span><span>装机小站</span></a>
+      <ul class="nav-links">
+        <li><a href="/">首页</a></li>
+        <li><a href="/parts.html">配件认识</a></li>
+        <li><a href="/guide.html">装机教程</a></li>
+        <li><a href="/builder.html" class="active">配置单</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" title="切换主题">🌙</button>
+        <button class="nav-toggle" title="菜单">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <h1>🛒 互动装机配置单</h1>
+      <p>像我的世界装模组一样选配件——与当前配置不兼容的选项会被<strong>直接置灰禁用</strong>，从源头杜绝选错。不知道从何下手？先试试下面的一键参考配置。</p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:36px;">
+    <div class="container">
+      <!-- 参考配置 -->
+      <div class="section-title">
+        <h2>⚡ 一键参考配置</h2>
+        <p class="sub">根据典型需求预搭配，可在下方自由调整</p>
+      </div>
+      <div class="preset-row" id="preset-row" style="margin-top:28px;"></div>
+
+      <div class="builder-layout" style="margin-top:8px;">
+        <!-- 左：配件选择 -->
+        <div>
+          <div class="picker-list" id="picker-list">
+            <div class="state-tip">⏳ 正在从服务器加载配件数据…</div>
+          </div>
+          <p id="builder-error" style="display:none;color:var(--danger);"></p>
+        </div>
+
+        <!-- 右：汇总 -->
+        <aside class="summary-panel">
+          <h3>📊 配置汇总</h3>
+          <div id="summary-rows"></div>
+
+          <h3 style="margin-top:22px;">⚡ 功耗 & 电源</h3>
+          <div class="wattage-bar">
+            <div class="bar"><div class="fill" id="watt-fill" style="width:0%"></div></div>
+            <div class="meta">
+              <span id="watt-label">整机功耗：——</span>
+              <span id="psu-label">电源：未选</span>
+            </div>
+          </div>
+          <div id="psu-advice" style="font-size:0.82rem;color:var(--text-soft);margin-top:6px;"></div>
+
+          <h3 style="margin-top:22px;">🔍 兼容性检查</h3>
+          <div class="compat-list" id="compat-list">
+            <div class="compat-item warn">⚠️ 等待数据加载…</div>
+          </div>
+
+          <div class="summary-actions">
+            <button class="btn btn-primary" id="btn-save">💾 保存配置单</button>
+            <button class="btn btn-ghost" id="btn-reset">↺ 重置为空</button>
+          </div>
+          <p class="save-note">配置保存在本机浏览器中，价格数据仅供参考。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明 -->
+  <section class="section" style="background:var(--bg-soft);padding-top:44px;">
+    <div class="container">
+      <div class="section-title">
+        <h2>📖 配置单怎么读？</h2>
+        <p class="sub">关于这里的检查规则与技术细节</p>
+      </div>
+      <div class="grid grid-2" style="margin-top:36px;max-width:900px;margin-left:auto;margin-right:auto;">
+        <div class="card" style="padding:22px;">
+          <h3 style="margin-bottom:10px;font-size:1.02rem;">🚫 不兼容会怎样？</h3>
+          <p style="color:var(--text-soft);font-size:0.9rem;">
+            像「我的世界」装模组一样：已选配件会<b>实时</b>对剩余选项做体检，冲突的商品直接置灰、无法点选，并用大白话告诉你原因（如「这块主板是 AMD 专用的，Intel CPU 装不进去」）。<b>红色</b>代表物理上装不进去，<b>黄色</b>代表能装但不建议。配件按阵营 / 世代 / 类型自动分组，默认收起，点一下即可展开挑选。
+          </p>
+        </div>
+        <div class="card" style="padding:22px;">
+          <h3 style="margin-bottom:10px;font-size:1.02rem;">✔️ 检查哪些内容？</h3>
+          <ul class="tip-list">
+            <li>CPU 与主板插槽是否一致（LGA1200 / LGA1700 / AM4 / AM5）</li>
+            <li>内存代数与主板是否匹配（DDR4 / DDR5）</li>
+            <li>机箱能否装下主板版型、显卡长度、散热器高度或水冷冷排</li>
+            <li>散热器扣具是否支持 CPU 插槽、压制力是否够</li>
+            <li>电源功率是否满足整机功耗 × 1.5 的余量</li>
+            <li>无核显 CPU 是否配了显卡、矿卡（P106）是否有核显输出</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:24px;max-width:900px;margin-left:auto;margin-right:auto;padding:22px;">
+        <h3 style="margin-bottom:10px;font-size:1.02rem;">💡 功耗怎么算的？</h3>
+        <p style="color:var(--text-soft);font-size:0.9rem;">
+          整机参考功耗 = CPU TDP + 显卡 TDP + 其他配件约 60W（主板 / 内存 / 硬盘 / 风扇）。建议电源功率 = 参考功耗 × 1.5（电源留有余量更安静、更稳定，且适合后续升级）。实际功耗会随负载变化，高端显卡瞬时功耗可能超过标称 TDP——所以选大不选小。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="f-brand">💻 装机小站</div>
+        <p class="f-note">商品数据为本站教学用途的示例数据，不构成购买建议；实际价格请以电商平台为准。</p>
+      </div>
+      <div class="f-links">
+        <a href="/parts.html">配件认识</a>
+        <a href="/guide.html">装机教程</a>
+        <a href="/builder.html">互动配置单</a>
+      </div>
+    </div>
+    <div class="f-bottom">© <span data-year>2026</span> 装机小站 · 仅供学习交流</div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/parts-data.js"></script>
+  <script src="/js/builder.js"></script>
+</body>
+</html>

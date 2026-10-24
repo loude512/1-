@@ -1,0 +1,6 @@
+# 欢迎所有搜索引擎抓取
+User-agent: *
+Allow: /
+
+# 站点地图（部署后请把域名换成你的真实域名）
+Sitemap: https://www.example.com/sitemap.xml

@@ -1,0 +1,13 @@
+{
+  "name": "pc-build-guide",
+  "version": "1.0.0",
+  "description": "电脑配件装机指导网站 —— 认识配件、学习装机、互动配置",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "sync-data": "node scripts/sync-data.js"
+  },
+  "keywords": ["PC", "装机", "电脑配件", "教程"],
+  "license": "MIT"
+}

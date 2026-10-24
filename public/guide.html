@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新手装机教程：十步图文教你组装台式电脑 | 装机小站</title>
+  <meta name="description" content="最详细的新手装机教程：从准备工具、装 CPU 内存、上散热器、装电源主板显卡到通电点亮装系统，十个步骤手把手教你组装人生第一台电脑，附每一步的避坑注意事项。" />
+  <meta name="keywords" content="装机教程,组装电脑,台式机组装,电脑装机步骤,新手装机,装机注意事项,CPU安装,装系统" />
+  <meta name="author" content="装机小站" />
+  <meta name="theme-color" content="#4a9eff" />
+  <link rel="canonical" href="https://www.example.com/guide.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="装机小站" />
+  <meta property="og:title" content="新手装机教程：十步组装一台电脑" />
+  <meta property="og:description" content="从零开始，十步教你组装一台台式电脑，每一步都有避坑提示。" />
+  <meta property="og:locale" content="zh_CN" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="logo" href="/"><span class="logo-icon">💻</span><span>装机小站</span></a>
+      <ul class="nav-links">
+        <li><a href="/">首页</a></li>
+        <li><a href="/parts.html">配件认识</a></li>
+        <li><a href="/guide.html" class="active">装机教程</a></li>
+        <li><a href="/builder.html">配置单</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" title="切换主题">🌙</button>
+        <button class="nav-toggle" title="菜单">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <h1>🛠️ 装机实战十步</h1>
+      <p>把一堆零件变成一台完整的电脑。按顺序操作，每一步都标出了要点与注意事项。开始前建议先读一遍全部步骤，心里有谱再动手。</p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:36px;">
+    <div class="container stepper-wrap">
+      <!-- 进度点 -->
+      <div class="stepper-progress" id="stepper-progress"></div>
+
+      <!-- 步骤面板容器 -->
+      <div id="stepper-panels"></div>
+
+      <!-- 上 / 下一步 -->
+      <div class="stepper-actions">
+        <button class="btn btn-ghost" id="btn-prev">← 上一步</button>
+        <button class="btn btn-primary" id="btn-next">下一步 →</button>
+      </div>
+      <div class="step-counter" id="step-counter"></div>
+
+      <!-- 装机清单下载式总结 -->
+      <details class="card" style="margin-top:36px;">
+        <summary style="cursor:pointer;font-weight:700;">📋 一页纸装机 checklist（点击展开）</summary>
+        <ol class="step-sublist" style="margin-top:16px;">
+          <li>防静电 + 工具 + 配件清点（螺丝刀、硅脂、扎带）</li>
+          <li>机箱外：CPU → 内存 → M.2 → 散热器（依次装到主板上）</li>
+          <li>CPU 三角标记对准；内存插 2/4 槽；M.2 斜插拧螺丝</li>
+          <li>散热器涂黄豆大小硅脂；撕膜（别忘了！）</li>
+          <li>电源装机箱；主板对铜柱装进去；I/O 挡板先装</li>
+          <li>显卡插 PCIe x16，扣挡板、接供电</li>
+          <li>接面板跳线（开机键线先接，风扇线后接）</li>
+          <li>理线：扎带松紧适度，避开风道</li>
+          <li>通电：先插显示器线再按开机键，看 BIOS 是否点亮</li>
+          <li>装系统（U 盘启动盘）、装驱动、跑温度测试</li>
+        </ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- 装机后 -->
+  <section class="section" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-title">
+        <h2>🎉 点亮之后还要做什么？</h2>
+        <p class="sub">硬件完成只是开始，这几步让电脑真正“能用”</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:36px;">
+        <div class="card">
+          <h3 style="margin-bottom:10px;">1️⃣ 进入 BIOS 检查</h3>
+          <p style="color:var(--text-soft);font-size:0.92rem;">开机狂按 Del / F2 进入 BIOS，确认 CPU、内存容量与频率、硬盘都被正确识别。开启 XMP / EXPO 让内存跑到标称频率。</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">2️⃣ 安装 Windows 系统</h3>
+          <p style="color:var(--text-soft);font-size:0.92rem;">用另一台电脑制作 U 盘启动盘（微软官方工具即可），插上后从 U 盘启动安装。系统装在速度最快的 NVMe 固态上。</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">3️⃣ 装驱动与测试</h3>
+          <p style="color:var(--text-soft);font-size:0.92rem;">先装主板芯片组驱动，再装 NVIDIA / AMD 显卡驱动。跑 15 分钟游戏或压力测试，观察 CPU / 显卡温度是否正常（一般 80°C 内放心用）。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="f-brand">💻 装机小站</div>
+        <p class="f-note">教程为通用流程，个别配件（如水冷、ARGB 集线器）请以包装盒内说明书为准。</p>
+      </div>
+      <div class="f-links">
+        <a href="/parts.html">配件认识</a>
+        <a href="/guide.html">装机教程</a>
+        <a href="/builder.html">互动配置单</a>
+      </div>
+    </div>
+    <div class="f-bottom">© <span data-year>2026</span> 装机小站 · 仅供学习交流</div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const STEPS = [
+      {
+        title: '准备工作',
+        icon: '🧰',
+        body: '装机前做好准备，能避免 90% 的返工和意外。找个宽大明亮、非地毯的桌面，把配件全部摆开。',
+        list: [
+          '工具：一把十字螺丝刀（带磁头最佳）、扎带若干、硅脂（散装 CPU 需要）',
+          '配件清点：CPU、主板、内存、硬盘、显卡、电源、机箱、散热器，对照订单逐一核对',
+          '阅读主板与机箱的说明书，特别是面板跳线（F_PANEL）位置',
+          '释放静电：洗手、摸金属水管或机箱铁皮；穿棉质衣物，避免毛衣、地毯环境'
+        ],
+        callouts: [
+          { type: 'warn', text: '没有磁性螺丝刀？给刀头磁化一下（在磁铁上蹭几十下即可），能极大避免螺丝掉进机箱死角。' }
+        ]
+      },
+      {
+        title: '安装 CPU',
+        icon: '🧠',
+        body: '这是最“惊心动魄”的一步，其实只要对准标记就万无一失。CPU 安装在机箱外的主板上完成。',
+        list: [
+          '找到主板 CPU 插槽，拉开固定拉杆',
+          '观察插槽与 CPU 上的三角形标记，两个三角对齐（通常都在左下角）',
+          '垂直、轻轻放下 CPU，不要平移拖拽任何方向',
+          '压回拉杆（Intel 是压杆再扣回框，AMD 直接合上铁臂），听到清脆扣合声即完成'
+        ],
+        callouts: [
+          { type: 'danger', text: '⚠️ 绝不能用力按压！如果放不下去，一定是没对准——拿出来重放，而不是压下去。针脚弯了基本无法修复。' }
+        ]
+      },
+      {
+        title: '安装内存',
+        icon: '⚡',
+        body: '内存是最简单的组件。两根内存条请优先插第 2 和第 4 槽（从 CPU 侧数），这是双通道的最优解。',
+        list: [
+          '掰开插槽两端的卡扣',
+          '内存条金手指上的缺口对准插槽防呆凸起',
+          '垂直向下按，两端同时听到“咔哒”声，卡扣自动合拢'
+        ],
+        callouts: [
+          { type: 'tip', text: '只插一根内存？多数主板建议插第 2 槽。三根内存的情况较罕见，以主板说明书为准。' }
+        ]
+      },
+      {
+        title: '安装 M.2 固态硬盘',
+        icon: '💾',
+        body: '把小巧的 M.2 固态斜插入主板 M.2 插槽，是现在最常见的系统盘安装方式。',
+        list: [
+          '找到主板 M.2 插槽（多有散热马甲覆盖，需先拧下）',
+          '取下配套的小螺丝放好，M.2 硬盘以 30° 角斜插入接口',
+          '轻轻压下硬盘尾部，用刚才的小螺丝固定',
+          '装回散热马甲（如果主板有）'
+        ],
+        callouts: [
+          { type: 'warn', text: 'SATA 固态 / 机械硬盘稍后装机箱时再装，它们走机箱硬盘位 + SATA 数据线，不急在这一步。' }
+        ]
+      },
+      {
+        title: '安装 CPU 散热器',
+        icon: '❄️',
+        body: '散热器决定你的 CPU 能否持续满血运行。风冷先看扣具是否支持你的 CPU 插槽，水冷还要规划机箱冷排位置。',
+        list: [
+          '安装散热器扣具底座（按说明书对应插槽类型）',
+          '在 CPU 正中挤黄豆大小硅脂，压上散热器时它会自然摊开',
+          '对角线交替拧紧固定螺丝',
+          '插好散热器供电线：机箱外先插主板 CPU_FAN 插针附近，水冷还要接冷头 USB / SATA 供电'
+        ],
+        callouts: [
+          { type: 'danger', text: '⚠️ 别忘记撕掉散热器底部的塑料保护膜！否则硅脂再好也压不住温度。' },
+          { type: 'tip', text: '涂硅脂贵在“薄而匀”，黄豆一颗即可，涂满反而成为隔热层。' }
+        ]
+      },
+      {
+        title: '安装电源',
+        icon: '🔌',
+        body: '多数机箱电源位在底部，带有独立风扇口。安装时风扇朝下（从机箱底部抽风），随机箱附带的减震垫别忘了。',
+        list: [
+          '电源装入机箱底部，对准四个螺丝孔',
+          '拧紧机箱尾部四颗固定螺丝',
+          '暂不理线：先确认所需线缆（24pin 主板、CPU 8pin、显卡供电）',
+          '模组电源按需插上线即可，非模组先把暂时不用的线扎好'
+        ],
+        callouts: [
+          { type: 'tip', text: '部分小机箱（如 ITX）可能要求先装电源再装主板，安装顺序以机箱说明书为准。' }
+        ]
+      },
+      {
+        title: '把主板装进机箱',
+        icon: '🏘️',
+        body: '把机箱外的“主板 + CPU + 内存 + 硬盘 + 散热器”整体移入机箱。这是装机最有成就感的一步。',
+        list: [
+          '先装 I/O 挡板（机箱背面矩形口），按压两端使其卡入到位',
+          '对照主板螺丝孔位，确认机箱铜柱位置（多余铜柱要拧掉，避免顶破主板）',
+          '主板斜放、挡板对齐，USB / 网口等从挡板孔伸出',
+          '对角线交替拧紧 6–9 颗主板螺丝，力度适中'
+        ],
+        callouts: [
+          { type: 'warn', text: '机箱里多出的铜柱如果顶在主板下面没孔的地方，轻则划伤、重则短路，务必检查。' }
+        ]
+      },
+      {
+        title: '安装独立显卡',
+        icon: '🎮',
+        body: '显卡插在最上面、最长的 PCIe x16 插槽。它又长又重，供电与固定都要到位。',
+        list: [
+          '拧下机箱后部对应挡板 2–3 颗螺丝并取下挡板',
+          '掰开 PCIe 插槽尾部的卡扣',
+          '垂直插入显卡至卡扣合拢，金手指缺口对准槽内凸起',
+          '接好显卡供电线（RTX 40 系注意 12VHPWR 接口务必插紧到底）',
+          '用取下的机箱螺丝固定显卡挡板'
+        ],
+        callouts: [
+          { type: 'danger', text: '⚠️ 供电要插紧！新显卡因接口松动烧毁接口的新闻屡见不鲜，听到响亮的咔哒声再停手。' },
+          { type: 'tip', text: '显卡超过 30cm 或很重，建议额外配显卡支架，避免长期下垂导致 PCIe 插槽受力开裂。' }
+        ]
+      },
+      {
+        title: '接线与理线',
+        icon: '🧵',
+        body: '这一步决定你的电脑“能不能点亮”与“好不好看”。耐心对照主板说明书，所有针脚都带防呆设计。',
+        list: [
+          '插 24pin 主板供电（较大那个）',
+          '插 CPU 8pin 供电（主板左上，散热器旁）',
+          '面板跳线：开机键、重启键、硬盘灯、电源灯，接主板的 F_PANEL（位置看说明书）',
+          '机箱风扇接 SYS_FAN / CHA_FAN 插针；水冷风扇与冷头按说明书接',
+          '理线：扎带松紧适度、线材避开风扇叶片与风道'
+        ],
+        callouts: [
+          { type: 'warn', text: '开机键跳线插反不会烧，只是开不了机；但 USB / 前置音频跳线不可带电插拔且方向要对。' }
+        ]
+      },
+      {
+        title: '通电测试与装系统',
+        icon: '✅',
+        body: '激动人心的时刻。先插好所有外接线再通电，第一次开机会经历“内存自检”，等 1–2 分钟不要慌。',
+        list: [
+          '插好显示器视频线（独显一定插显卡上！）、键盘鼠标',
+          '插电源线，打开电源背部开关',
+          '按机箱开机键，观察机箱风扇转、显示器出现画面',
+          '狂按 Del / F2 进入 BIOS，确认硬件识别齐全、开启 XMP / EXPO',
+          '插 U 盘启动盘安装 Windows，之后装主板与显卡驱动'
+        ],
+        callouts: [
+          { type: 'danger', text: '⚠️ 点不亮先别急：90% 是内存或显卡没插紧，断电重新插拔；CPU 8pin / 24pin 没插也会完全不亮。' },
+          { type: 'tip', text: '第一次开机会看到内存自检灯亮 1–2 分钟，属正常现象。系统装好后跑半小时游戏观察温度。' }
+        ]
+      }
+    ];
+
+    (function () {
+      const progressBar = document.getElementById('stepper-progress');
+      const panelsBox = document.getElementById('stepper-panels');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const counter = document.getElementById('step-counter');
+      let current = 0;
+
+      // 渲染进度点
+      progressBar.innerHTML = STEPS.map((_, i) =>
+        `<button class="step-dot" data-i="${i}" title="第 ${i + 1} 步：${STEPS[i].title}">${i + 1}</button>`).join('');
+
+      // 渲染步骤面板
+      panelsBox.innerHTML = STEPS.map((s, i) => `
+        <div class="step-panel${i === 0 ? ' active' : ''}" data-i="${i}">
+          <div class="step-no">STEP ${String(i + 1).padStart(2, '0')} / ${STEPS.length}</div>
+          <h3>${s.icon} ${s.title}</h3>
+          <p class="step-body">${s.body}</p>
+          <ol class="step-sublist">${s.list.map((l) => `<li>${l}</li>`).join('')}</ol>
+          ${(s.callouts || []).map((c) => `
+            <div class="callout callout-${c.type}">
+              <span class="ico">${c.type === 'tip' ? '💡' : c.type === 'warn' ? '⚠️' : '⛔'}</span>
+              <span>${c.text}</span>
+            </div>`).join('')}
+        </div>`).join('');
+
+      function update() {
+        progressBar.querySelectorAll('.step-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+          d.classList.toggle('done', i < current);
+        });
+        panelsBox.querySelectorAll('.step-panel').forEach((p, i) => {
+          p.classList.toggle('active', i === current);
+        });
+        btnPrev.disabled = current === 0;
+        btnPrev.style.opacity = current === 0 ? '0.4' : '1';
+        btnNext.textContent = current === STEPS.length - 1 ? '🎉 完成装机！' : '下一步 →';
+        counter.textContent = `第 ${current + 1} / ${STEPS.length} 步 · ${STEPS[current].title}`;
+      }
+
+      btnPrev.addEventListener('click', () => { if (current > 0) { current--; update(); } });
+      btnNext.addEventListener('click', () => {
+        if (current < STEPS.length - 1) {
+          current++;
+          update();
+        } else {
+          showToast('🎉 恭喜你完成全部教程！去「配置单」试试搭配一台吧');
+        }
+      });
+      progressBar.addEventListener('click', (e) => {
+        const dot = e.target.closest('.step-dot');
+        if (dot) { current = Number(dot.dataset.i); update(); }
+      });
+
+      update();
+    })();
+  </script>
+</body>
+</html>
