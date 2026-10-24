@@ -8,6 +8,14 @@
     "dev": "node server.js",
     "sync-data": "node scripts/sync-data.js"
   },
-  "keywords": ["PC", "装机", "电脑配件", "教程"],
-  "license": "MIT"
+  "keywords": [
+    "PC",
+    "装机",
+    "电脑配件",
+    "教程"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
 }
